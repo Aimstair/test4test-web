@@ -5,8 +5,7 @@ export const COMPANY = "Aimtera Labs";
 export const PACKAGE_ID = "com.aimteralabs.test4test";
 export const PLAY_URL = `https://play.google.com/store/apps/details?id=${PACKAGE_ID}`;
 
-// TODO: replace with the real support inbox before going live.
-export const SUPPORT_EMAIL = "support@example.com";
+export const SUPPORT_EMAIL = "aimteralabs@gmail.com";
 export const GOOGLE_GROUP_EMAIL = "test4test-community@googlegroups.com";
 
 // Canonical origin used for canonical URLs, sitemap and structured data.

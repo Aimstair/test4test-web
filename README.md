@@ -27,7 +27,6 @@ Every Play Store CTA carries a `referrer` with `utm_content=<placement>`, so Pla
 ## Before launch
 
 - Production domain is https://test4test.live (override with `NEXT_PUBLIC_SITE_URL`)
-- Set `SUPPORT_EMAIL` in `lib/content.ts`
 - Review `/privacy` and `/terms`
 - Verify the domain in Google Search Console and Bing Webmaster Tools (`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`) and submit `/sitemap.xml`
 - Link the website from the Play Store listing (Store settings → Website)
