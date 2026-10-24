@@ -5,7 +5,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const home = GUIDES.reduce((latest, g) => (g.dateModified > latest ? g.dateModified : latest), "2026-10-25");
+  const home = GUIDES.reduce((latest, g) => (g.dateModified > latest ? g.dateModified : latest), "2026-10-24");
   return [
     { url: absoluteUrl("/"), lastModified: home, changeFrequency: "weekly", priority: 1 },
     ...GUIDES.map((g) => ({
