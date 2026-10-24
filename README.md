@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Test4Test landing page
 
-## Getting Started
-
-First, run the development server:
+Marketing site for the [Test4Test Android app](https://play.google.com/store/apps/details?id=com.aimteralabs.test4test).
+Next.js (App Router, static export) + Tailwind CSS v4 + Motion.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static site in ./out (deploy to Vercel or any static host)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `lib/content.ts`: all copy, stats, prices, FAQ, Play Store link and support email
+- `components/app-ui/`: HTML replicas of the app's screens (top bar, catalog cards, streak bar, studio, etc.)
+- `components/sections/`: page scenes (Hero, Problem, HowItWorks, Roles, Economy, Features, Pricing, Faq, FinalCta)
+- `app/privacy`, `app/terms`: legal pages (drafts, review before launch)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Every Play Store CTA carries a `referrer` with `utm_content=<placement>`, so Play Console acquisition reports show which section converts.
 
-## Learn More
+## SEO / AEO
 
-To learn more about Next.js, take a look at the following resources:
+- Topic-cluster pages live in `lib/guides.ts` (one page per search intent, rendered by `app/[slug]`). Add a guide there and it gets its route, metadata, JSON-LD, sitemap entry, homepage card and footer link automatically.
+- Generated: `/sitemap.xml`, `/robots.txt` (AI crawlers explicitly allowed), `/llms.txt`, `/manifest.webmanifest`, OG image.
+- Structured data (`lib/seo.ts`): Organization, WebSite, MobileApplication, FAQPage, HowTo, Article, BreadcrumbList.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Before launch
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Production domain is https://test4test.live (override with `NEXT_PUBLIC_SITE_URL`)
+- Set `SUPPORT_EMAIL` in `lib/content.ts`
+- Review `/privacy` and `/terms`
+- Verify the domain in Google Search Console and Bing Webmaster Tools (`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`) and submit `/sitemap.xml`
+- Link the website from the Play Store listing (Store settings → Website)

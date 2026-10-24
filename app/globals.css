@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Palette mirrors the app's ThemeContext.tsx */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #000000;
+  --text-2: #8e8e93;
+  --text-3: #a0a0ab;
+  --border: #e5e5ea;
+  --tag: #f2f2f7;
+  --primary: #0a84ff;
+  --primary-soft: #e3effe;
+  --success: #34c759;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+  --cta: #f0993a;
+  --token: #eab308;
+  --karma: #ef4444;
+  --proplus: #a855f7;
+  --brand-a: #1565c0;
+  --brand-b: #8e24aa;
+  --phone: #0b0b0d;
+  /* app-only tokens (ThemeContext + screen styles) */
+  --pill: #f2f2f7;
+  --soft-blue: #e1f0ff;
+  --soft-blue-border: #c7e0ff;
+  --pill-btn: #000000;
+  --pill-btn-fg: #ffffff;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --text: #ffffff;
+  --text-2: #8e8e93;
+  --text-3: #636366;
+  --border: #38383a;
+  --tag: #2c2c2e;
+  --primary-soft: #0a2540;
+  --success: #32d74b;
+  --warning: #ff9f0a;
+  --danger: #ff453a;
+  --proplus: #bf5af2;
+  --phone: #2a2a2e;
+  --pill: #333333;
+  --soft-blue: #1c2b36;
+  --soft-blue-border: #2d4559;
+  --pill-btn: #ffffff;
+  --pill-btn-fg: #000000;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-ink-3: var(--text-3);
+  --color-line: var(--border);
+  --color-tag: var(--tag);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-cta: var(--cta);
+  --color-token: var(--token);
+  --color-karma: var(--karma);
+  --color-proplus: var(--proplus);
+  --color-brand-a: var(--brand-a);
+  --color-brand-b: var(--brand-b);
+  --color-phone: var(--phone);
+  --color-pill: var(--pill);
+  --color-soft-blue: var(--soft-blue);
+  --color-soft-blue-border: var(--soft-blue-border);
+  --color-pill-btn: var(--pill-btn);
+  --color-pill-btn-fg: var(--pill-btn-fg);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+/* Phone replicas: Android system fonts */
+.rn {
+  font-family: var(--font-roboto), Roboto, sans-serif;
+}
+.rn-mono {
+  font-family: var(--font-roboto-mono), "Roboto Mono", monospace;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
